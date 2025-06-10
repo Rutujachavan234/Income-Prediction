@@ -1,11 +1,12 @@
 
 import streamlit as st
 import pandas as pd
-from pathlib import Path
 import matplotlib.pyplot as plt
 import seaborn as sns
-from model import train_model
 from sklearn.preprocessing import LabelEncoder
+from model import train_model
+from pathlib import Path  
+
 
 st.set_page_config(page_title="Income Prediction App", layout="wide")
 
