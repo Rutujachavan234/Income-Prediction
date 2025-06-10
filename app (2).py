@@ -1,23 +1,18 @@
-
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
-from sklearn.preprocessing import LabelEncoder
 from model import train_model
-from pathlib import Path  
-
+from sklearn.preprocessing import LabelEncoder
+from pathlib import Path 
 
 st.set_page_config(page_title="Income Prediction App", layout="wide")
 
-# Navigation bar
 st.sidebar.title("Navigation")
 page = st.sidebar.radio("Go to", ["Home", "Dataset", "Summary", "Graphs", "Predict"])
 
-# Load model and accuracy
 model, accuracy = train_model()
 
-# Load sample dataset
 df = pd.read_csv("sample_adult_data.csv") if Path("sample_adult_data.csv").exists() else pd.DataFrame()
 
 if page == "Home":
@@ -77,7 +72,7 @@ elif page == "Predict":
     input_df = pd.DataFrame({
         'age': [age],
         'workclass': [workclass],
-        'fnlwgt': [100000],  # Placeholder
+        'fnlwgt': [100000],
         'education': [education],
         'education_num': [education_num],
         'marital_status': [marital_status],
@@ -98,4 +93,5 @@ elif page == "Predict":
         prediction = model.predict(input_df)[0]
         result = ">50K" if prediction == 1 else "<=50K"
         st.success(f"Predicted Income: **{result}**")
+
 
