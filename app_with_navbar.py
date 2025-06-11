@@ -18,7 +18,11 @@ page = st.sidebar.radio("Go to", ["Home", "Dataset", "Summary", "Graphs", "Predi
 model, accuracy = train_model()
 
 # Load sample dataset
-df = pd.read_csv("sample_adult_data.csv") if Path("sample_adult_data.csv").exists() else pd.DataFrame()
+try:
+    df = pd.read_csv("sample_adult_data.csv")
+except FileNotFoundError:
+    df = pd.DataFrame()
+
 
 if page == "Home":
     st.title("Income Classification using Machine Learning")
