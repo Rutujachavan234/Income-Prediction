@@ -5,6 +5,8 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from model import train_model
 from sklearn.preprocessing import LabelEncoder
+from pathlib import Path 
+
 
 st.set_page_config(page_title="Income Prediction App", layout="wide")
 
