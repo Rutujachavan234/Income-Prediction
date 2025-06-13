@@ -19,7 +19,7 @@ model, accuracy = train_model()
 
 # Load sample dataset
 try:
-    df = pd.read_csv("sample_adult_data.csv")
+    df = pd.read_csv("adult_sample.csv")
 except FileNotFoundError:
     df = pd.DataFrame()
 
